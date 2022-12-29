@@ -11,6 +11,8 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.purple,
+         centerTitle: true,
         title: const Text('BMI Calculator'),
       ),
       body: SafeArea(
@@ -61,27 +63,35 @@ class HomePage extends GetView<HomeController> {
                     return null;
                   },
                 ),
-                TextButton(
-                  onPressed: () {
-                    if (controller.formKey.currentState!.validate() == true) {
-                      double boyunKaresi =
-                          (double.parse(controller.boyController.text) / 100) *
-                              (double.parse(controller.boyController.text) /
-                                  100);
-                                  
-                      double kilo =
-                          double.parse(controller.kiloController.text);
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.purple.shade300
+                    ),
+                    onPressed: () {
+                      print(controller.boyController.text);
+                      print(controller.kiloController.text);
+                      if (controller.formKey.currentState!.validate() == true) {
+                        double boyunKaresi =
+                            (double.parse(controller.boyController.text) / 100) *
+                                (double.parse(controller.boyController.text) /
+                                    100);
+                                    
+                        double kilo =
+                            double.parse(controller.kiloController.text);
 
-                      double hesap = kilo / boyunKaresi;
+                        double hesap = kilo / boyunKaresi;
 
-                      print(hesap);
-                      Get.toNamed(
-                        Routes.DETAIL,
-                        parameters: {"hesap": hesap.toString()},
-                      );
-                    }
-                  },
-                  child: const Text("Hesapla"),
+                        print(hesap);
+                        Get.toNamed(
+                          Routes.DETAIL,
+                          parameters: {"hesap": hesap.toString()},
+                        );
+                      }
+                    },
+                    child: const Text("Hesapla"),
+                  ),
                 ),
               ],
             ),

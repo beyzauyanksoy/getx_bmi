@@ -9,6 +9,8 @@ class DetailPage extends GetView<DetailController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.purple,
+         centerTitle: true,
         title: const Text('Sonuç'),
       ),
       body: SafeArea(
